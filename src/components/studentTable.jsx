@@ -53,7 +53,7 @@ function StudentTable() {
           <div className="py-3 border-bottom d-flex justify-content-between">
             <h5 className="mb-0 fw-semibold">Students</h5>
             <button
-              className="btn btn-dark btn-sm"
+              className="btn btn-dark "
               onClick={() => setShowAddForm(true)}
             >
               Add Student
@@ -77,7 +77,7 @@ function StudentTable() {
               {students.length > 0 ? (
                 students.map((student) => (
                   <tr key={student.student_id}>
-                    <td>{student.student_id}</td>
+                    <td>#{student.student_id}</td>
                     <td>{student.first_name}</td>
                     <td>{student.last_name}</td>
                     <td>{student.email}</td>

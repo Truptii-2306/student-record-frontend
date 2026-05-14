@@ -101,12 +101,12 @@ function AddStudentForm({ setShowAddForm, addStudent }) {
 
           <div className="d-flex justify-content-end mt-4 gap-2">
             <Button
-              variant="outline-dark btn btn-sm"
+              variant="outline-dark btn "
               onClick={() => setShowAddForm(false)}
             >
               Close
             </Button>
-            <Button variant="dark btn btn-sm" onClick={handleSubmit}>
+            <Button variant="dark btn " onClick={handleSubmit}>
               Add Student
             </Button>
           </div>
