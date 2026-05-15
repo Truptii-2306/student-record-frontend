@@ -1,0 +1,23 @@
+.custom-pagination .page-link {
+  background-color: white;
+  border-color: #dee2e6;
+  color: #212529;
+}
+
+.custom-pagination .page-link:hover {
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+/* Active button */
+.custom-pagination .page-item.active .page-link {
+  background-color: #212529;
+  border-color: #212529;
+  color: white;
+}
+
+/* Disabled buttons */
+.custom-pagination .page-item.disabled .page-link {
+  background-color: white;
+  color: #adb5bd;
+}

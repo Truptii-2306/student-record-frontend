@@ -138,7 +138,7 @@ export default function StudentDetail({ id, setId }) {
             <BsX size={28} />
           </button>
 
-          <div className="mb-5 ">
+          <div className="mb-4 ">
             <div className="mb-3 ">
               <h3 className="fw-bold mb-1">
                 {studentData.first_name} {studentData.last_name}

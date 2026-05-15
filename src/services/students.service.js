@@ -1,7 +1,7 @@
 import httpService from "./http.Service";
 
-const getAllStudents = async () => {
-  const res = await httpService.get("/students");
+const getAllStudents = async (page, limit) => {
+  const res = await httpService.get("/students", { params: { page, limit } });
   return res.data;
 };
 

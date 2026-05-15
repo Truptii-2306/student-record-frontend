@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Table, Card } from "react-bootstrap";
+import { Table, Card, Pagination } from "react-bootstrap";
 import studentsService from "../services/students.service";
 import { BiTrash } from "react-icons/bi";
 import { BsEye } from "react-icons/bs";
@@ -10,15 +10,18 @@ function StudentTable() {
   const [students, setStudents] = useState([]);
   const [showAddForm, setShowAddForm] = useState(false);
   const [studentId, setStudentId] = useState(null);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
     getStudents();
-  }, []);
+  }, [page]);
 
   const getStudents = async () => {
     try {
-      const studentsData = await studentsService.getAllStudents();
+      const studentsData = await studentsService.getAllStudents(page, 10);
       setStudents(studentsData.data);
+      setTotalPages(studentsData.totalPages);
     } catch (error) {
       console.error("Failed to fetch students:", error);
     }
@@ -143,6 +146,31 @@ function StudentTable() {
           </div>
         </div>
       ) : null}
+
+      <div className="d-flex justify-content-between align-items-center  py-3 border-top">
+        <small className="text-muted">{students.length} students</small>
+        <Pagination className="mb-0 custom-pagination">
+          <Pagination.Prev
+            disabled={page === 1}
+            onClick={() => setPage((prev) => prev - 1)}
+          />
+
+          {Array.from({ length: totalPages }, (_, index) => (
+            <Pagination.Item
+              key={index + 1}
+              active={page === index + 1}
+              onClick={() => setPage(index + 1)}
+            >
+              {index + 1}
+            </Pagination.Item>
+          ))}
+
+          <Pagination.Next
+            disabled={page === totalPages}
+            onClick={() => setPage((prev) => prev + 1)}
+          />
+        </Pagination>
+      </div>
     </div>
   );
 }
